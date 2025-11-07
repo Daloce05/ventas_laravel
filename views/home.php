@@ -92,7 +92,7 @@
 </div>
 
 <script>
-// Add/remove row functionality
+// Funcionalidad para añadir/eliminar filas
 function makeRemoveButtons(container) {
   container.querySelectorAll('.remove-row').forEach(function(btn) {
     btn.removeEventListener('click', removeRow);
@@ -129,6 +129,6 @@ document.getElementById('add-sale').addEventListener('click', function() {
   makeRemoveButtons(tbody);
 });
 
-// init remove buttons
+// inicializar botones de eliminar
 makeRemoveButtons(document);
 </script>

@@ -7,17 +7,17 @@ class SalesModel
 
     public function __construct(array $ventas)
     {
-        // Each venta expected: ['id'=>..., 'cliente'=>..., 'producto'=>..., 'cantidad'=>int, 'precio'=>float, 'fecha'=>...]
+        // Se espera cada venta como: ['id'=>..., 'cliente'=>..., 'producto'=>..., 'cantidad'=>int, 'precio'=>float, 'fecha'=>...]
         $this->ventas = $ventas;
     }
 
-    // a) total number of sales (count of records)
+    // a) número total de ventas (cantidad de registros)
     public function totalSalesCount(): int
     {
         return count($this->ventas);
     }
 
-    // b) client who spent the most (sum cantidad * precio)
+    // b) cliente que más gastó (suma de cantidad * precio)
     public function clientWhoSpentMost(): ?array
     {
         $spend = [];
@@ -35,7 +35,7 @@ class SalesModel
         return ['cliente' => $topClient, 'gastado' => $spend[$topClient]];
     }
 
-    // c) most sold product (by total quantity)
+    // c) producto más vendido (por cantidad total)
     public function mostSoldProduct(): ?array
     {
         $qty = [];

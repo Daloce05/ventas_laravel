@@ -3,20 +3,20 @@ namespace App\Utils;
 
 class MathUtils
 {
-    // Compound interest: principal * (1 + rate) ^ periods
-    // rate e.g. 0.05 for 5%
+    // Interés compuesto: principal * (1 + tasa) ^ periodos
+    // tasa p.ej. 0.05 para 5%
     public function compoundInterest(float $principal, float $rate, int $periods): float
     {
         return $principal * pow(1 + $rate, $periods);
     }
 
-    // Calculate net salary for Colombia (example): deduct pension 4%, salud 4%, and a simplified solidarity contribution
-    // This is an illustrative calculation, not legal financial advice.
+    // Calcular salario neto para Colombia (ejemplo): descontar pensión 4%, salud 4% y una contribución de solidaridad simplificada
+    // Esto es una ilustración, no un consejo financiero o legal.
     public function calculateNetSalary(float $gross): array
     {
-        $pension = $gross * 0.04; // employee
+    $pension = $gross * 0.04; // empleado
         $salud = $gross * 0.04;
-        // solidarity fund (simplified): if gross > 4*SMMLV, add 1% (example). We'll use SMMLV = 1160000 COP as sample value.
+    // Fondo de solidaridad (simplificado): si bruto > 4*SMMLV, añadir 1% (ejemplo). Usamos SMMLV = 1160000 COP como valor de muestra.
         $smmlv = 1160000;
         $solidarity = 0;
         if ($gross > 4 * $smmlv) {
@@ -33,7 +33,7 @@ class MathUtils
         ];
     }
 
-    // Conversion: km/h to m/s
+    // Conversión: km/h a m/s
     public function kmhToMs(float $kmh): float
     {
         return $kmh * 1000 / 3600;

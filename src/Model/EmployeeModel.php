@@ -7,7 +7,7 @@ class EmployeeModel
 
     public function __construct(array $employees)
     {
-        // Expect each employee: ['name'=>..., 'salary'=>float, 'department'=>...]
+        // Se espera cada empleado como: ['name'=>..., 'salary'=>float, 'department'=>...]
         $this->employees = $employees;
     }
 

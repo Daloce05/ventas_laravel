@@ -14,7 +14,7 @@
 </nav>
 <div class="container">
     <?php
-    // Render view
+  // Renderizar la vista
     $viewFile = __DIR__ . '/' . ($view ?? 'home') . '.php';
     if (file_exists($viewFile)) {
         include $viewFile;

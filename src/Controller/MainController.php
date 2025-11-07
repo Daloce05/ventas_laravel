@@ -19,12 +19,12 @@ class MainController
 
     public function handlePost()
     {
-        // Support two input modes: JSON textareas (legacy) or dynamic form arrays.
+    // Soporta dos modos de entrada: áreas JSON (legado) o formularios dinámicos.
         $employees = [];
         $ventas = [];
         $errors = [];
 
-        // 1) Form arrays: employees[name][], employees[salary][], employees[department][]
+    // 1) Arreglos de formulario: employees[name][], employees[salary][], employees[department][]
         if (!empty($_POST['employees']) && is_array($_POST['employees'])) {
             $e = $_POST['employees'];
             $names = $e['name'] ?? [];
@@ -41,7 +41,7 @@ class MainController
             }
         }
 
-        // 2) Form arrays for sales: sales[id][], sales[cliente][], sales[producto][], sales[cantidad][], sales[precio][], sales[fecha][]
+    // 2) Arreglos de formulario para ventas: sales[id][], sales[cliente][], sales[producto][], sales[cantidad][], sales[precio][], sales[fecha][]
         if (!empty($_POST['sales']) && is_array($_POST['sales'])) {
             $s = $_POST['sales'];
             $ids = $s['id'] ?? [];
@@ -63,7 +63,7 @@ class MainController
             }
         }
 
-        // 3) Backward-compatible: parse JSON textareas if provided
+    // 3) Compatibilidad hacia atrás: parsear áreas JSON si se proporcionan
         $employeesJson = $_POST['employees_json'] ?? '';
         $salesJson = $_POST['sales_json'] ?? '';
         if (!empty($employeesJson) && empty($employees)) {
@@ -83,7 +83,7 @@ class MainController
             }
         }
 
-        // Process employees
+    // Procesar empleados
         $empResults = [];
         if (!empty($employees)) {
             $empModel = new EmployeeModel($employees);
@@ -92,7 +92,7 @@ class MainController
             $empResults['above_avg_employees'] = $empModel->employeesAboveDepartmentAverage();
         }
 
-        // Process sales
+    // Procesar ventas
         $salesResults = [];
         if (!empty($ventas)) {
             $salesModel = new SalesModel($ventas);
@@ -101,10 +101,10 @@ class MainController
             $salesResults['top_product'] = $salesModel->mostSoldProduct();
         }
 
-        // Example math utils usage (compound interest & net salary)
+    // Ejemplo de uso de utilidades matemáticas (interés compuesto y salario neto)
         $math = new MathUtils();
-        $compoundExample = $math->compoundInterest(1000, 0.05, 12); // example
-        $netSalaryExample = $math->calculateNetSalary(2500000); // example COP
+    $compoundExample = $math->compoundInterest(1000, 0.05, 12); // ejemplo
+    $netSalaryExample = $math->calculateNetSalary(2500000); // ejemplo COP
 
         $this->render('results', [
             'employees' => $employees,
